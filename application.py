@@ -1,7 +1,6 @@
 import pickle
 import os
 import streamlit as st
-from langchain import OpenAI
 from langchain_openai import OpenAI
 from langchain.chains import RetrievalQAWithSourcesChain
 import time
