@@ -2,6 +2,7 @@ import pickle
 import os
 import streamlit as st
 from langchain.vectorstores import FAISS
+from dotenv import load_dotenv
 from langchain import OpenAI
 from langchain_openai import OpenAI
 from langchain.vectorstores import FAISS
