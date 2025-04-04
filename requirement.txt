@@ -11,3 +11,8 @@ OpenAI == 0.28.0
 OpenAI == 0.28.0
 OpenAI == 0.28.0
 python-dotenv== 1.1.0
+streamlit
+langchain
+faiss-cpu  
+openai
+python-dotenv
