@@ -16,10 +16,13 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.document_loaders import UnstructuredURLLoader
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores import FAISS
-load_dotenv()  # take environment variables from .env (especially openai api key)
-api_key = os.getenv("OPENAI_API_KEY")
 st.title("Equity reseach tool")
-
+try:
+    api_key = st.secrets["OPENAI_API_KEY"]
+except:
+    load_dotenv()
+    api_key = os.getenv("OPENAI_API_KEY")
+✅
 urls = []
 for i in range(3):
     url = st.sidebar.text_input(f"URL {i+1}")
