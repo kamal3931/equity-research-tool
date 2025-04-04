@@ -17,7 +17,7 @@ from langchain.document_loaders import UnstructuredURLLoader
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores import FAISS
 load_dotenv()  # take environment variables from .env (especially openai api key)
-
+api_key = os.getenv("OPENAI_API_KEY")
 st.title("Equity reseach tool")
 
 urls = []
