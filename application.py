@@ -1,7 +1,6 @@
 import pickle
 import os
 import streamlit as st
-from dotenv import load_dotenv
 import dill
 from langchain.vectorstores import FAISS
 from langchain import OpenAI
