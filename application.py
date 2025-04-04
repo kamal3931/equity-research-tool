@@ -22,7 +22,6 @@ try:
 except:
     load_dotenv()
     api_key = os.getenv("OPENAI_API_KEY")
-✅
 urls = []
 for i in range(3):
     url = st.sidebar.text_input(f"URL {i+1}")
