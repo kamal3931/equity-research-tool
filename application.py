@@ -1,17 +1,25 @@
+import pickle
 import os
-import time
 import streamlit as st
-from langchain import OpenAI
+from dotenv import load_dotenv
+import dill
 from langchain.vectorstores import FAISS
+from langchain import OpenAI
+from langchain_openai import OpenAI
+from langchain.vectorstores import FAISS
+from langchain.chains import RetrievalQAWithSourcesChain
+import time
+import faiss
+import langchain
 from langchain.chains import RetrievalQAWithSourcesChain
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.document_loaders import UnstructuredURLLoader
 from langchain.embeddings import OpenAIEmbeddings
+from langchain.vectorstores import FAISS
+load_dotenv()  # take environment variables from .env (especially openai api key)
 
-# Use Streamlit secrets
-openai_api_key = st.secrets["OPENAI_API_KEY"]
-os.environ["OPENAI_API_KEY"] = openai_api_key
 st.title("Equity reseach tool")
+
 urls = []
 for i in range(3):
     url = st.sidebar.text_input(f"URL {i+1}")
@@ -42,12 +50,10 @@ if process_url_clicked:
     docs = text_splitter.split_documents(data)
     # create embeddings and save it to FAISS index
     Embeddings = OpenAIEmbeddings()
-    
     vectorstore_openai = FAISS.from_documents(docs, Embeddings)
     main_placeholder.text("Embedding Vector Started Building...✅✅✅")
     time.sleep(2)
-    if not os.path.exists(file_path):
-        os.makedirs(file_path)
+
     # Save the FAISS index to a pickle file
     vectorstore_openai.save_local(file_path)
 
