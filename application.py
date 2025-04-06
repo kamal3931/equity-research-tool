@@ -14,11 +14,8 @@ from langchain.vectorstores import FAISS
 from dotenv import load_dotenv
 
 st.title("Equity reseach tool")
-try:
-    api_key = st.secrets["OPENAI_API_KEY"]
-except:
-    load_dotenv()
-    api_key = os.getenv("OPENAI_API_KEY")
+openai_api_key = st.secrets["OPENAI_API_KEY"]
+os.environ["OPENAI_API_KEY"] = openai_api_key
 urls = []
 for i in range(3):
     url = st.sidebar.text_input(f"URL {i+1}")
@@ -49,10 +46,12 @@ if process_url_clicked:
     docs = text_splitter.split_documents(data)
     # create embeddings and save it to FAISS index
     Embeddings = OpenAIEmbeddings()
+    
     vectorstore_openai = FAISS.from_documents(docs, Embeddings)
     main_placeholder.text("Embedding Vector Started Building...✅✅✅")
     time.sleep(2)
-
+    if not os.path.exists(file_path):
+        os.makedirs(file_path)
     # Save the FAISS index to a pickle file
     vectorstore_openai.save_local(file_path)
 
