@@ -1,6 +1,5 @@
 import os
 import time
-import dill
 import streamlit as st
 from langchain import OpenAI
 from langchain.vectorstores import FAISS
