@@ -1,18 +1,15 @@
 import pickle
 import os
 import streamlit as st
+from dotenv import load_dotenv
+import dill
+from langchain.vectorstores import FAISS
 from langchain import OpenAI
 from langchain.chains import RetrievalQAWithSourcesChain
 import time
-import faiss
-import langchain
-from langchain.chains import RetrievalQAWithSourcesChain
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.document_loaders import UnstructuredURLLoader
 from langchain.embeddings import OpenAIEmbeddings
-from langchain.vectorstores import FAISS
-from dotenv import load_dotenv
-
 st.title("Equity reseach tool")
 openai_api_key = st.secrets["OPENAI_API_KEY"]
 os.environ["OPENAI_API_KEY"] = openai_api_key
