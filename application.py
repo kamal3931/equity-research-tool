@@ -1,18 +1,18 @@
-import pickle
 import os
-import streamlit as st
-from dotenv import load_dotenv
-import dill
-from langchain.vectorstores import FAISS
-from langchain import OpenAI
-from langchain.chains import RetrievalQAWithSourcesChain
 import time
+import dill
+import streamlit as st
+from langchain import OpenAI
+from langchain.vectorstores import FAISS
+from langchain.chains import RetrievalQAWithSourcesChain
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.document_loaders import UnstructuredURLLoader
 from langchain.embeddings import OpenAIEmbeddings
-st.title("Equity reseach tool")
+
+# Use Streamlit secrets
 openai_api_key = st.secrets["OPENAI_API_KEY"]
 os.environ["OPENAI_API_KEY"] = openai_api_key
+st.title("Equity reseach tool")
 urls = []
 for i in range(3):
     url = st.sidebar.text_input(f"URL {i+1}")
