@@ -1,7 +1,6 @@
 import pickle
 import os
 import streamlit as st
-import dill
 from langchain.vectorstores import FAISS
 from langchain import OpenAI
 from langchain_openai import OpenAI
