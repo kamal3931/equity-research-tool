@@ -1,7 +1,6 @@
 import pickle
 import os
 import streamlit as st
-from dotenv import load_dotenv
 import dill
 from langchain.vectorstores import FAISS
 from langchain import OpenAI
@@ -16,7 +15,6 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.document_loaders import UnstructuredURLLoader
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores import FAISS
-load_dotenv()  # take environment variables from .env (especially openai api key)
 
 st.title("Equity reseach tool")
 
