@@ -16,8 +16,6 @@ from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores import FAISS
 from dotenv import load_dotenv
 load_dotenv()
-os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
-
 st.title("Equity research tool")
 
 urls = []
