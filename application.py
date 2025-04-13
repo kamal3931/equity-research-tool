@@ -30,8 +30,6 @@ main_placeholder = st.empty()
 st.button("submit")
 st.sidebar.image(image="img.png",width=285)
 query = main_placeholder.text_input("Question: ")
-
-
 llm = OpenAI(temperature=0.9, max_tokens=500)
 
 if process_url_clicked:
